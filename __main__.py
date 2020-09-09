@@ -9,6 +9,7 @@ Files: settings.py, __main__.py, api.py, config.py, managers.py,
 parsecleaner.py, upload.py, view.py
 """
 
+# -tc- si à la racine du projet, renommer main.py
 
 from api import Api
 from parsecleaner import Parser

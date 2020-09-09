@@ -17,6 +17,8 @@ class Api:
         """Retrieve products from API OpenFoodfacts by Category."""
 
         print("Importation des produits...")
+        # -tc- Attention, ce n'est pas comme ça qu'on parcours une liste
+        # -tc- for category in param_categories
         for i in range(len(param_categories)):
             payload = {
                 'action': 'process',
@@ -29,4 +31,9 @@ class Api:
                 'json': True
             }
             response = requests.get(URL, params=payload)  # API request
+            # -tc- gérer les erreurs réseau + status différents de 200
+
+            # -tc- append() ajoute une liste à ta liste. C'est ce que tu veux ?
+   
+            # -tc- Je ferais personnellement un return plutôt que de créer un attribut
             self.api_result.append(response.json())  # answer stored in a list

@@ -3,10 +3,12 @@
 
 """This module manage all the input and print from the user."""
 
+# -tc- attention à la PEP8
 import random
 from colorama import Fore, init
 
 from settings import category_app
+# -tc- utiliser les managers
 from database_xchange.managers import DataMgt
 
 init()
@@ -48,11 +50,14 @@ class App:
         print("       3  - Quitter")
         authorised_answer_list, user_answer = ['1', '2', '3'], '0'
         while user_answer not in authorised_answer_list:
+            # -tc- attention, on veut répéter l'affichage du menu si le choix n'est pas bon
             print(Fore.GREEN)
             user_answer = input("       Entrer votre choix : ")
             print(Fore.RESET)
         if user_answer == '1':
+            # -tc- Imbriquer les appels de fonction de menu n'est pas une bonne idée
             self.category_choice_display()
+            # -tc- pourquoi gérer les étapes d'après ici?
             self.display_selected_prod()
             self.display_substitute()
             self.display_save_substitute()
@@ -76,6 +81,7 @@ class App:
         print("       ---------------------------------\n")
         for index, line in enumerate(result, 1):
             print(f"       {index}  -  {line[1]}")
+        # -tc- si on a 200 categories, tu ne va pas coder authorised_answer_list à la main
         authorised_answer_list, user_answer = [
             '1', '2', '3', '4', '5', '6', '7'], None
         while user_answer not in authorised_answer_list:
@@ -95,6 +101,7 @@ class App:
         print("       ------------------------------------- \n")
         temp_var1 = DataMgt()
         result_1 = temp_var1.get_prod_by_category(category_selected)
+        # -tc- gérer le random en sql
         selected = random.sample(result_1, 10)
         ordered = sorted(selected, key=lambda x: x[0])
         for index, line in enumerate(ordered, 1):
@@ -107,6 +114,7 @@ class App:
     def display_selected_prod(self):
         """ask to the user to choose a product."""
 
+        # -tc- si 200 produits, tu ne veux pas coder cette liste à la main
         authorised_answer_list, user_answer = [
             '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'], None
         while user_answer not in authorised_answer_list:

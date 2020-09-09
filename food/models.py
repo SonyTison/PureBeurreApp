@@ -9,17 +9,22 @@ from database_xchange.managers import CategoryManager, ProductManager, FavoriteM
 
 class Category:
 
+    # -tc- pas nécessaire si on veut simplifier les imports
     objects = CategoryManager(db)
     
+    # -tc- Pourquoi l'id de la catégorie est à None ? Ajouer
+    # -tc- id_category à la liste des paramètres.
     def __init__(self, name=None, products=None):
         self.id_category = None
         self.name = name
         self.products = products
 
 class Product:
-
+    
+    # -tc- pour simplifier, enlever
     objects = ProductManager(db)
 
+    # -tc- ajouter l'id aux paramètres. Il ne vaut pas toujours None
     def __init__(self,
                  name=None,
                  description=None,
@@ -38,8 +43,10 @@ class Product:
 
 class Favorite:
 
+    # -tc- pour simplifier, enlever
     objects = FavoriteManager(db)
 
+    # -tc- ajouter l'id aux paramètres, il ne vaut pas toujours None
     def __init__(self,
                  id_product_origin=None,
                  id_product_substitute=None, 

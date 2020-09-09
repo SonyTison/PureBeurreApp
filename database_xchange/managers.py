@@ -109,6 +109,9 @@ class DataMgt:
         return content
 
 """
+
+
+# -tc- tes imports ne respectent pas la PEP8
 from datetime import datetime
 import mysql.connector
 
@@ -119,6 +122,7 @@ class BaseManager:
 
     def __init__(self, db):
         self.db = db # db is also my_database with mysql-connector
+        # -tc- mieux vaut récupérer le curseur dans chaque méthode
         self.my_cursor = self.my_database.cursor()
         self.myresult = None
 
@@ -133,6 +137,9 @@ class CategoryManager(BaseManager):
 
         self.my_cursor.execute("SELECT id_category, name FROM Categories")
         self.myresult = self.my_cursor.fetchall()
+        # -tc- L'optimal serait que tu retournes des objets catégories
+        # -tc- plutôt que des tuples. 
+        # -tc- pourquoi créer un attribut myresult?
         return self.myresult
 
 class ProductManager(BaseManager):
@@ -140,15 +147,17 @@ class ProductManager(BaseManager):
 
     def __init__(self, db):
         super().__init__(db)
-        pass
+        pass # -tc- pas de pass si ta méthode n'est pas vide
 
-
+    # -tc- prendre en argument la liste de produits à insérer
     def create_from_api(self):
         pass
 
+    # -tc- que veut dire créer depuis la base de données ?
     def create_from_database(self):
         pass
 
+    # -tc- Bien, il n'y a plus qu'à implémenter ces méthodes
     def get_product_by_id(self, id_product):
         pass
 
