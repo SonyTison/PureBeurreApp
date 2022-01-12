@@ -2,7 +2,7 @@ colorama==0.4.1
 mysql-connector-python==8.0.20
 packaging==20.3
 pep8==1.7.1
-pipenv==2020.6.2
+pipenv==2022.1.8
 pylint==2.3.1
 PyMySQL==0.9.3
 pyparsing==2.4.6
